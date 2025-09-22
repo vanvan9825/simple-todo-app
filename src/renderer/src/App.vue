@@ -1,8 +1,5 @@
 <template>
-  <div class="app-container">
-    <div class="bg-blue-500 text-red-500 p-4 rounded-lg">
-      This is styled with Tailwind CSS
-    </div>
+  <div class="fixed inset-0 min-h-screen h-screen w-full flex justify-center items-center p-0 m-0 box-border overflow-auto bg-gradient-to-tr from-cyan-400 via-purple-600 to-blue-500 animate-gradient bg-[length:400%_400%]">
     <TodoApp />
   </div>
 </template>
@@ -17,39 +14,14 @@ export default {
 </script>
 
 <style>
-.app-container {
-  min-height: 100vh;
-  height: 100vh;
-  background: linear-gradient(135deg, #00c4cc, #8e44ad, #007bff);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  box-sizing: border-box;
-  overflow: auto;
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+.animate-gradient {
+  animation: gradient 15s ease infinite;
 }
 
 body {
