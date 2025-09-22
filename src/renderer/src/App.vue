@@ -1,6 +1,9 @@
 <template>
   <div class="app-container">
-    <TodoApp/>
+    <div class="bg-blue-500 text-red-500 p-4 rounded-lg">
+      This is styled with Tailwind CSS
+    </div>
+    <TodoApp />
   </div>
 </template>
 
@@ -39,9 +42,11 @@ export default {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
