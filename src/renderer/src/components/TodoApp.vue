@@ -2,52 +2,43 @@
   <div class="todo-app">
     <h1>Todo App</h1>
     <div class="input-container">
-      <input v-model="newTodo" @keyup.enter="addTodo" placeholder="Add your new todo" />
-      <button @click="addTodo">+</button>
+      <InputText v-model="newTodo" @keyup.enter="addTodo" placeholder="Add your new todo" class="flex-1" />
+      <Button label="Add"  @click="addTodo" />
     </div>
     <div v-if="todos.length" class="todo-list">
       <div v-for="(todo, index) in todos" :key="index" class="todo-item">
         <span>{{ todo }}</span>
-        <button @click="removeTodo(index)" class="delete-btn">Delete</button>
+         <Button label="Delete" class="p-button-danger p-button-sm" @click="removeTodo(index)" />
       </div>
       <p>You have {{ todos.length }} pending task(s)</p>
-      <button @click="clearAll" class="clear-btn">Clear All</button>
+      <Button label="Clear All" class="p-button-secondary mt-2" @click="clearAll" />
     </div>
     <p v-else>No tasks pending</p>
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
+import InputText from 'primevue/inputtext'
+import Button from 'primevue/button'
 
-export default {
-  name: 'TodoApp',
-  setup() {
-    // Khai báo dữ liệu phản hồi
-    const todos = ref([]);
-    const newTodo = ref('');
+const todos = ref([])
+const newTodo = ref('')
 
-    // Thêm todo mới
-    const addTodo = () => {
-      if (newTodo.value.trim()) {
-        todos.value.push(newTodo.value.trim());
-        newTodo.value = '';
-      }
-    };
-
-    // Xóa todo tại index
-    const removeTodo = (index) => {
-      todos.value.splice(index, 1);
-    };
-
-    // Xóa tất cả todo
-    const clearAll = () => {
-      todos.value = [];
-    };
-
-    return { todos, newTodo, addTodo, removeTodo, clearAll };
+const addTodo = () => {
+  if (newTodo.value.trim()) {
+    todos.value.push(newTodo.value.trim())
+    newTodo.value = ''
   }
-};
+  }
+
+const removeTodo = (index) => {
+  todos.value.splice(index, 1)
+}
+
+const clearAll = () => {
+  todos.value = []
+}
 </script>
 
 <style scoped>
